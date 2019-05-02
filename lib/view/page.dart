@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_example/main.dart';
 import 'package:flutter_example/bloc/bloc.dart';
 import 'package:flutter_example/view/page2.dart';
-import 'package:flutter_example/view/page3.dart';
 
 class CounterPage extends StatefulWidget {
   @override
@@ -41,11 +40,10 @@ class _CounterPageState extends State<CounterPage> {
                   style: TextStyle(fontSize: 24.0),
                 ),
                 RaisedButton(
-                  child: Text('counter2로'),
+                  child: Text('counter2'),
                   onPressed: () => Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (BuildContext context) => 
-                      // CounterPageTwo()
-                      CounterPageThree()
+                      CounterPageTwo()
                   )),
                 ),
               ],

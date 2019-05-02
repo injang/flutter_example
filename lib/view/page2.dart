@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // project
 import 'package:flutter_example/main.dart';
 import 'package:flutter_example/bloc/bloc.dart';
-import 'package:flutter_example/view/page3.dart';
+import 'package:flutter_example/view/page.dart';
 
 class CounterPageTwo extends StatelessWidget {
   @override
@@ -26,8 +26,9 @@ class CounterPageTwo extends StatelessWidget {
                   style: TextStyle(fontSize: 24.0),
                 ),
                 RaisedButton(
+                  child: Text('counter1'),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CounterPageThree()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CounterPage()));
                   },
                 ),
               ],

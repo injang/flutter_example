@@ -19,12 +19,12 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      // BlocProvider 설정
-      home: BlocProvider<CounterBloc>(
+    return BlocProvider<CounterBloc>(
         bloc: _counterBloc,
-        child: CounterPage(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          home: CounterPage(),
+          // BlocProvider 설정
       ),
     );
   }
