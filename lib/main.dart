@@ -21,6 +21,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      // BlocProvider 설정
       home: BlocProvider<CounterBloc>(
         bloc: _counterBloc,
         child: CounterPage(),

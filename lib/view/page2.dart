@@ -4,31 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // project
 import 'package:flutter_example/main.dart';
 import 'package:flutter_example/bloc/bloc.dart';
-import 'package:flutter_example/view/page2.dart';
 import 'package:flutter_example/view/page3.dart';
 
-class CounterPage extends StatefulWidget {
-  @override
-  _CounterPageState createState() => _CounterPageState();
-}
-
-class _CounterPageState extends State<CounterPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-      
-//     );
-//   }
-// }
-
-// class CounterPage extends StatelessWidget {
+class CounterPageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // DI 위젯으로 사용되어 블록의 단일 인스턴스가 하위 트리 내의 여러 위젯에 제공 될 수 있습니다.
     final CounterBloc _counterBloc = BlocProvider.of<CounterBloc>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Counter')),
+      appBar: AppBar(title: Text('Counter2')),
       body: BlocBuilder<CounterEvent, int>(
         bloc: _counterBloc,
         builder: (BuildContext context, int count) {
@@ -41,12 +26,9 @@ class _CounterPageState extends State<CounterPage> {
                   style: TextStyle(fontSize: 24.0),
                 ),
                 RaisedButton(
-                  child: Text('counter2로'),
-                  onPressed: () => Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (BuildContext context) => 
-                      // CounterPageTwo()
-                      CounterPageThree()
-                  )),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CounterPageThree()));
+                  },
                 ),
               ],
             ),
@@ -74,7 +56,7 @@ class _CounterPageState extends State<CounterPage> {
                 _counterBloc.dispatch(CounterEvent.decrement);
               },
             ),
-          ),          
+          ),
         ],
       ),
     );
