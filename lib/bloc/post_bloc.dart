@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:rxdart/rxdart.dart';
 
 import 'package:flutter_example/bloc/bloc.dart';
-import 'package:flutter_example/post.dart';
+import 'package:flutter_example/models/models.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   final http.Client httpClient;
@@ -20,7 +20,6 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   @override
-  // TODO: implement initialState
   PostState get initialState => PostUninitialized();
 
   @override
@@ -62,9 +61,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     } else {
       throw Exception('error fetching posts');
     }
-  }  
-
-  
+  }    
 }
 
 

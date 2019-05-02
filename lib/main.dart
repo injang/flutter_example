@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:bloc/bloc.dart';
-
-import 'package:flutter_example/bloc/bloc.dart';
-import 'package:flutter_example/post.dart';
-import 'package:flutter_example/post_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-class SimpleBlocDelegate extends BlocDelegate {
-  @override
-  void onTransition(Transition transition) {
-    print(transition);
-  }
-}
+import 'package:flutter_example/bloc/bloc.dart';
+import 'package:flutter_example/models/models.dart';
+import 'package:flutter_example/bloc/simple_bloc_delegate.dart';
 
 void main() {
   BlocSupervisor().delegate = SimpleBlocDelegate();
