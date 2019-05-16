@@ -1,37 +1,57 @@
-//package
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-//project
-import 'package:flutter_example/bloc/bloc.dart';
-import 'package:flutter_example/view/page.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-enum CounterEvent { increment, decrement }
+import 'counter.dart'; // Import the Counter
+
+final counter = Counter(); // Instantiate the store
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
-  State<StatefulWidget> createState() => MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MobX',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
 }
 
-class MyAppState extends State<MyApp> {
-  final CounterBloc _counterBloc = CounterBloc();
+class MyHomePage extends StatelessWidget {
+  const MyHomePage();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CounterBloc>(
-        bloc: _counterBloc,
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          home: CounterPage(),
-          // BlocProvider 설정
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('MobX Counter'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            // Wrapping in the Observer will automatically re-render on changes to counter.value
+            Observer(
+              builder: (_) => Text(
+                    '${counter.value}',
+                    style: Theme.of(context).textTheme.display1,
+                  ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: counter.increment,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _counterBloc.dispose();
-    super.dispose();
   }
 }
